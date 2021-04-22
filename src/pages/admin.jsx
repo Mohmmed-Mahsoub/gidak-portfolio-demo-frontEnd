@@ -1,47 +1,46 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import { DataContext } from "./../context/dataContext";
 const AdminPage = () => {
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
+  const [headingData, setHeadingData] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .put("http://localhost:1337/pages/2", {
-        heading: title,
-        address,
+
+    /* axios
+      .put(`http://localhost:1337/languages/1`, {
+        content: [{ }],
       })
       .then((response) => {
         console.log(response.data);
-      });
+      }); */
 
     /* console.log("title:", title, "address:", address); */
   };
   return (
     <div>
       <h2>admin</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">title</label>
-        <input
-          className="title"
-          type="text"
-          value={title}
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
-        />
-        <label htmlFor="address">address</label>
-        <input
-          className="address"
-          type="text"
-          value={address}
-          onChange={(event) => {
-            setAddress(event.target.value);
-          }}
-        />
-        <button type="submit">submit</button>
-      </form>
+      <div className="row">
+        <div className="col-2">heading</div>
+        <div className="col-10">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={headingData}
+              onChange={(event) => {
+                setHeadingData(event.target.value);
+              }}
+            />
+            <button type="submit">submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default AdminPage;
+
+/*
+
+*/

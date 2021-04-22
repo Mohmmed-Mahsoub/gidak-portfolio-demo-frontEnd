@@ -24,6 +24,7 @@ const LoginPage = ({ history }) => {
         console.log("Well done!");
         console.log("User profile", response.data.user);
         console.log("User token", response.data.jwt);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         setUser(response.data.user);
       })
       .catch((error) => {
