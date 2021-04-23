@@ -8,7 +8,7 @@ const DataContextProvider = (props) => {
   useEffect(async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:1337/languages?lang=${pageLanguage}`
+        `https://gidak-portfolio-demo.herokuapp.com/languages?lang=${pageLanguage}`
       );
       /* console.log("data", data); */
       const { content } = await data[0];

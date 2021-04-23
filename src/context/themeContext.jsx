@@ -7,7 +7,7 @@ const ThemeContextProvider = (props) => {
   useEffect(async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:1337/themes?themeType=${pageThemeType}`
+        `https://gidak-portfolio-demo.herokuapp.com/themes?themeType=${pageThemeType}`
       );
       /* console.log("data", data); */
 
