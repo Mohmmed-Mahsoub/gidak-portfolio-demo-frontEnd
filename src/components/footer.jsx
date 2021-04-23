@@ -6,7 +6,7 @@ const Footer = ({ component }) => {
         <div className="forceTouchesLogo">
           <a href="https://forcetouches.com/" rel="noreferrer" target="_blank">
             <img
-              src={`https://gidak-portfolio-demo.herokuapp.com/${component.companyLogo.url}`}
+              src={`https://gidak-portfolio-demo.herokuapp.com${component.companyLogo.url}`}
               alt=""
             />
           </a>
