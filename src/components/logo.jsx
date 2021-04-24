@@ -4,10 +4,7 @@ const Logo = ({ component }) => {
   return (
     <div className="logo">
       <div className="bg-color">
-        <img
-          src={`https://gidak-portfolio-demo.herokuapp.com${component.logo.url}`}
-          alt="logo"
-        />
+        <img src={`${component.logo.url}`} alt="logo" />
       </div>
     </div>
   );
