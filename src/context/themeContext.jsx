@@ -7,6 +7,7 @@ const ThemeContextProvider = (props) => {
   const [isThemeDataFetched, setIsThemeDataFetched] = useState(false);
   useEffect(async () => {
     try {
+      setIsThemeDataFetched(false);
       const { data } = await axios.get(
         `https://gidak-portfolio-demo.herokuapp.com/themes?themeType=${pageThemeType}`
       );

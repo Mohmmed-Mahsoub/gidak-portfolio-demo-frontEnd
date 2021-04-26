@@ -35,7 +35,12 @@ const HomePage = () => {
       }
     });
   }, [pageData]);
-
+  console.log(
+    "isThemeDataFetched",
+    isThemeDataFetched,
+    "isPageDataFetched",
+    isPageDataFetched
+  );
   if (isThemeDataFetched && isPageDataFetched == false) {
     return (
       <>

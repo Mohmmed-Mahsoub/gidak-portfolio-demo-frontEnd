@@ -8,6 +8,7 @@ const DataContextProvider = (props) => {
   /* console.log("pageData", pageData); */
   useEffect(async () => {
     try {
+      setIsPageDataFetched(false);
       const { data } = await axios.get(
         `https://gidak-portfolio-demo.herokuapp.com/languages?lang=${pageLanguage}`
       );
