@@ -9,9 +9,9 @@ import Footer from "./../../components/footer";
 import { ThemeContext } from "./../../context/themeContext";
 import ThemeToggle from "./../../components/themeToggle";
 const HomePage = () => {
-  const { themeData } = useContext(ThemeContext);
+  const { themeData, isThemeDataFetched } = useContext(ThemeContext);
   /* console.log("themeData", themeData); */
-  const { pageData } = useContext(DataContext);
+  const { pageData, isPageDataFetched } = useContext(DataContext);
   const [logo, setLogo] = useState();
   const [heading, setHeading] = useState();
   const [address, setAddress] = useState();
@@ -36,31 +36,39 @@ const HomePage = () => {
     });
   }, [pageData]);
 
-  if (themeData && pageData == false) {
-    return <h1>loading</h1>;
-  }
-  return (
-    <section
-      style={{
-        backgroundColor: `${themeData[0].bg}`,
-        color: `${themeData[0].text}`,
-      }}
-    >
-      <div className="container">
-        {logo && <Logo component={logo} />}
-        {heading && <PageHeading component={heading} />}
-        {address && <Address component={address} />}
-        <div className="toContact">
-          {socialContact && (
-            <ContactWays component={socialContact} themeStyle={themeData[0]} />
-          )}
+  if (isThemeDataFetched && isPageDataFetched == false) {
+    return (
+      <>
+        <h1>loading</h1>
+      </>
+    );
+  } else {
+    return (
+      <section
+        style={{
+          backgroundColor: `${themeData[0].bg}`,
+          color: `${themeData[0].text}`,
+        }}
+      >
+        <div className="container">
+          {logo && <Logo component={logo} />}
+          {heading && <PageHeading component={heading} />}
+          {address && <Address component={address} />}
+          <div className="toContact">
+            {socialContact && (
+              <ContactWays
+                component={socialContact}
+                themeStyle={themeData[0]}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      {copyRight && <Footer component={copyRight} />}
-      <ThemeToggle themeStyle={themeData[0]} />
-      <LangToggle themeStyle={themeData[0]} />
-    </section>
-  );
+        {copyRight && <Footer component={copyRight} />}
+        <ThemeToggle themeStyle={themeData[0]} />
+        <LangToggle themeStyle={themeData[0]} />
+      </section>
+    );
+  }
 };
 
 export default HomePage;

@@ -4,12 +4,14 @@ export const DataContext = createContext(null);
 const DataContextProvider = (props) => {
   const [pageData, setPageData] = useState([]);
   const [pageLanguage, setPageLanguage] = useState("arabic");
+  const [isPageDataFetched, setIsPageDataFetched] = useState(false);
   /* console.log("pageData", pageData); */
   useEffect(async () => {
     try {
       const { data } = await axios.get(
         `https://gidak-portfolio-demo.herokuapp.com/languages?lang=${pageLanguage}`
       );
+      setIsPageDataFetched(true);
       /* console.log("data", data); */
       const { content } = await data[0];
       /* console.log("content", content); */
@@ -25,6 +27,7 @@ const DataContextProvider = (props) => {
         pageData,
         pageLanguage,
         setPageLanguage,
+        isPageDataFetched,
       }}
     >
       {props.children}
